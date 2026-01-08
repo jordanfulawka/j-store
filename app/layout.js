@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
           <header>
             <div className='header-content'>
               <Link href={'/'}>
-                <h1>Smolstore</h1>
+                <h1>J.Store</h1>
               </Link>
 
               <h5 className='mid-text'>-Cool stuff for cool people-</h5>
@@ -43,41 +43,43 @@ export default function RootLayout({ children }) {
               </h5>
             </div>
             <div className='links-container'>
-              <h3>Smoljames</h3>
-              <Link href='/'>Hub</Link>
-              <Link href='/'>Roadmap</Link>
-            </div>
-            <div>
-              <h3>Store</h3>
-              <Link href='/'>Home</Link>
-              <Link href='/cart'>Cart</Link>
-            </div>
-            <div>
-              <h3>Support</h3>
-              <Link href='/contact'>Contact</Link>
-              <Link href='/faq'>FAQ</Link>
+              <div>
+                <h3>Smoljames</h3>
+                <Link href='/'>Hub</Link>
+                <Link href='/'>Roadmap</Link>
+              </div>
+              <div>
+                <h3>Store</h3>
+                <Link href='/'>Home</Link>
+                <Link href='/cart'>Cart</Link>
+              </div>
+              <div>
+                <h3>Support</h3>
+                <Link href='/contact'>Contact</Link>
+                <Link href='/faq'>FAQ</Link>
+              </div>
             </div>
             <div className='socials'>
               <p>
-                ©{' '}
+                ©
                 <a href='https://google.com' target='_blank'>
                   Jordan{' '}
                 </a>
                 2025
                 <br />
                 Build with NextJS
-                <div className='social-links'>
-                  <Link href='/' target='_blank'>
-                    <i className='fa-brands fa-github'></i>
-                  </Link>
-                  <Link href='/' target='_blank'>
-                    <i className='fa-brands fa-youtube'></i>
-                  </Link>
-                  <Link href='/' target='_blank'>
-                    <i className='fa-brands fa-linkedin'></i>
-                  </Link>
-                </div>
               </p>
+              <div className='social-links'>
+                <Link href='/' target='_blank'>
+                  <i className='fa-brands fa-github'></i>
+                </Link>
+                <Link href='/' target='_blank'>
+                  <i className='fa-brands fa-youtube'></i>
+                </Link>
+                <Link href='/' target='_blank'>
+                  <i className='fa-brands fa-linkedin'></i>
+                </Link>
+              </div>
             </div>
           </footer>
         </div>
