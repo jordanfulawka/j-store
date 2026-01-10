@@ -2,22 +2,16 @@
 
 import { useState } from 'react';
 import Modal from './Modal';
+import { useProducts } from '@/context/ProductContext';
 
-function Products() {
+function Products({ planner, stickers }) {
   const [modalImage, setModalImage] = useState(null);
-  const stickerDescription = {
-    CSS_HTML_Javascript:
-      'Core web technologies for structure, styling, interactivity.',
-    Docker: 'Platform for containerizing, deploying, and scaling applications.',
-    Firebase: 'Cloud platform for databases, authentication, and app backend.',
-    Next: 'React-based framework for server-side rendering and static sites.',
-    Node: 'JavaScript runtime for building scalable backend applications.',
-    PostgreSQL:
-      'Robust open-source database with advanced querying capabilities.',
-    React: 'JavaScript library for building interactive user interfaces.',
-  };
 
-  const stickers = Object.keys(stickerDescription);
+  const { handleAddProduct } = useProducts();
+
+  if (!stickers.length || !planner) {
+    return null;
+  }
   return (
     <>
       {modalImage && (
@@ -87,24 +81,29 @@ function Products() {
         </div>
         <div className='sticker-container'>
           {stickers.map((sticker, stickerIndex) => {
+            const stickerName = sticker.name;
+            const stickerImgUrl = sticker.name
+              .replaceAll(' Sticker.png', '')
+              .replaceAll(' ', '_');
             return (
               <div key={stickerIndex} className='sticker-card'>
                 <button
                   className='img-button'
-                  onClick={() => setModalImage(sticker)}
+                  onClick={() => setModalImage(stickerImgUrl)}
                 >
                   <img
-                    src={`low_res/${sticker}.jpeg`}
-                    alt={`${sticker}-low-res`}
+                    src={`low_res/${stickerImgUrl}.jpeg`}
+                    alt={`${stickerImgUrl}-low-res`}
                   />
                 </button>
                 <div className='sticker-info'>
                   <p className='text-medium'>
-                    {sticker.replaceAll('_', ' ')} Sticker.png
+                    {stickerName.replaceAll('_', ' ')}
                   </p>
-                  <p>{stickerDescription[sticker]}</p>
+                  <p>{sticker.description}</p>
                   <h4>
-                    <span>$</span>5.99
+                    <span>$</span>
+                    {sticker.prices[0].unit_amount / 100}
                   </h4>
                   <button>Add to cart</button>
                 </div>
