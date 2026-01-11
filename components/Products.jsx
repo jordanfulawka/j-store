@@ -72,7 +72,7 @@ function Products({ planner, stickers }) {
               <button
                 onClick={() => {
                   const plannerPriceId = planner.default_price;
-                  handleIncrementProduct(plannerPriceId, 1);
+                  handleIncrementProduct(plannerPriceId, 1, planner);
                 }}
               >
                 Add to cart
@@ -116,7 +116,7 @@ function Products({ planner, stickers }) {
                   <button
                     onClick={() => {
                       const stickerPriceId = sticker.default_price;
-                      handleIncrementProduct(stickerPriceId, 1);
+                      handleIncrementProduct(stickerPriceId, 1, sticker);
                     }}
                   >
                     Add to cart
