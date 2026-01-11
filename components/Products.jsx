@@ -7,7 +7,8 @@ import { useProducts } from '@/context/ProductContext';
 function Products({ planner, stickers }) {
   const [modalImage, setModalImage] = useState(null);
 
-  const { handleAddProduct } = useProducts();
+  const { handleIncrementProduct, cart } = useProducts();
+  console.log(cart);
 
   if (!stickers.length || !planner) {
     return null;
@@ -68,7 +69,14 @@ function Products({ planner, stickers }) {
               </li>
             </ul>
             <div className='purchase-btns'>
-              <button>Add to cart</button>
+              <button
+                onClick={() => {
+                  const plannerPriceId = planner.default_price;
+                  handleIncrementProduct(plannerPriceId, 1);
+                }}
+              >
+                Add to cart
+              </button>
             </div>
           </div>
         </div>
@@ -105,7 +113,14 @@ function Products({ planner, stickers }) {
                     <span>$</span>
                     {sticker.prices[0].unit_amount / 100}
                   </h4>
-                  <button>Add to cart</button>
+                  <button
+                    onClick={() => {
+                      const stickerPriceId = sticker.default_price;
+                      handleIncrementProduct(stickerPriceId, 1);
+                    }}
+                  >
+                    Add to cart
+                  </button>
                 </div>
               </div>
             );

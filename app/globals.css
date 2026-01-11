@@ -41,6 +41,15 @@ header {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  position: relative;
+  padding-right: 0.5rem;
+}
+
+.cart-num {
+  position: absolute;
+  top: -8px;
+  right: -5px;
+  color: #030615;
 }
 
 .header-content h1 {
