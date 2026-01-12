@@ -46,9 +46,9 @@ export default function RootLayout({ children }) {
               </div>
               <div className='links-container'>
                 <div>
-                  <h3>Smoljames</h3>
-                  <Link href='/'>Hub</Link>
-                  <Link href='/'>Roadmap</Link>
+                  <h3>About Me</h3>
+                  <Link href='/'>Portfolio</Link>
+                  <Link href='/'>Website</Link>
                 </div>
                 <div>
                   <h3>Store</h3>
@@ -72,13 +72,16 @@ export default function RootLayout({ children }) {
                   Build with NextJS
                 </p>
                 <div className='social-links'>
-                  <Link href='/' target='_blank'>
+                  <Link href='https://github.com/jordanfulawka' target='_blank'>
                     <i className='fa-brands fa-github'></i>
                   </Link>
-                  <Link href='/' target='_blank'>
+                  {/* <Link href='/' target='_blank'>
                     <i className='fa-brands fa-youtube'></i>
-                  </Link>
-                  <Link href='/' target='_blank'>
+                  </Link> */}
+                  <Link
+                    href='https://www.linkedin.com/in/jordan-fulawka-561619230/'
+                    target='_blank'
+                  >
                     <i className='fa-brands fa-linkedin'></i>
                   </Link>
                 </div>

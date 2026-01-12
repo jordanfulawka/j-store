@@ -34,8 +34,32 @@ function ImageBanner() {
             <h1>The J Store</h1>
           </div>
           <div>
-            <button>Shop stickers</button>
-            <button>Shop planner</button>
+            <button
+              onClick={() => {
+                console.log('test');
+                window.scrollTo({
+                  top:
+                    document.getElementById('sticker-container').offsetTop -
+                    250,
+                  behavior: 'smooth',
+                });
+              }}
+            >
+              Shop stickers
+            </button>
+            <button
+              onClick={() => {
+                console.log('test');
+                window.scrollTo({
+                  top:
+                    document.getElementById('planner-container').offsetTop -
+                    250,
+                  behavior: 'smooth',
+                });
+              }}
+            >
+              Shop planner
+            </button>
           </div>
         </div>
       </div>

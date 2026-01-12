@@ -31,7 +31,7 @@ function Products({ planner, stickers }) {
           <h2>Shop our Selection</h2>
           <p>From organization or accessorization</p>
         </div>
-        <div className='planner-container'>
+        <div className='planner-container' id='planner-container'>
           <div>
             <button
               className='img-button'
@@ -87,7 +87,7 @@ function Products({ planner, stickers }) {
           <h2>Or Collect Your Favourite Tech</h2>
           <p>Choose from our custom designed tech logos</p>
         </div>
-        <div className='sticker-container'>
+        <div className='sticker-container' id='sticker-container'>
           {stickers.map((sticker, stickerIndex) => {
             const stickerName = sticker.name;
             const stickerImgUrl = sticker.name

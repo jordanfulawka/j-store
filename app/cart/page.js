@@ -1,19 +1,18 @@
 'use client';
 
 import { useProducts } from '@/context/ProductContext';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 async function createCheckout(cart, router) {
   try {
     const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
-    console.log('here');
     const lineItems = Object.keys(cart).map((item, itemIndex) => {
       return {
         price: item,
         quantity: cart[item].quantity,
       };
     });
-    console.log('before response!');
     const response = await fetch(baseURL + '/api/checkout', {
       method: 'POST',
       headers: {
@@ -22,9 +21,7 @@ async function createCheckout(cart, router) {
       body: JSON.stringify({ lineItems }),
     });
     const data = await response.json();
-    console.log(data);
     if (response.ok) {
-      console.log(data);
       router.push(data.url);
     }
   } catch (error) {
@@ -33,12 +30,13 @@ async function createCheckout(cart, router) {
 }
 
 export default function CartPage() {
-  const { cart } = useProducts();
+  const { cart, handleIncrementProduct } = useProducts();
   const router = useRouter();
 
   return (
     <section className='cart-section'>
       <h2>Your cart</h2>
+      {Object.keys(cart).length === 0 && <p>You have no items in your cart!</p>}
       <div className='cart-container'>
         {Object.keys(cart).map((item, itemIndex) => {
           const itemData = cart[item];
@@ -67,7 +65,16 @@ export default function CartPage() {
                   <input
                     value={itemQuantity}
                     placeholder='2'
-                    onChange={() => {}}
+                    type='number'
+                    onChange={(e) => {
+                      const newValue = e.target.value;
+                      handleIncrementProduct(
+                        itemData.default_price,
+                        newValue,
+                        itemData,
+                        true
+                      );
+                    }}
                   />
                 </div>
               </div>
@@ -76,7 +83,9 @@ export default function CartPage() {
         })}
       </div>
       <div className='checkout-container'>
-        <button>&larr; Continue Shopping</button>
+        <Link href='/'>
+          <button>&larr; Continue Shopping</button>
+        </Link>
         <button onClick={() => createCheckout(cart, router)}>
           Checkout &rarr;
         </button>

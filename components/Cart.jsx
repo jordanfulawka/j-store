@@ -7,7 +7,7 @@ function Cart() {
   const { cart } = useProducts();
   const numProducts = Object.keys(cart).reduce((acc, cur, index) => {
     const numProduct = cart[cur].quantity;
-    const sum = acc + numProduct;
+    const sum = acc + Number(numProduct);
     return sum;
   }, 0);
   return (
