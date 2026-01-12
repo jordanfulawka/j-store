@@ -10,7 +10,6 @@ export async function getProducts() {
     }
     const products = await response.json();
     return products;
-    11;
   } catch (error) {
     console.error('Error fetching products:', error.message);
     return [];
